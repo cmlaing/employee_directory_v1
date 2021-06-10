@@ -22,6 +22,18 @@ body {
 }
 
 
+/*==================
+Header 
+==================*/
+
+h3{
+    margin-top: 30px;
+    margin-left: 50px;
+    color: darkgray;
+
+
+}
+
 
 /* 
 Main content inside wrapper flexbox, 
@@ -46,8 +58,8 @@ card-col contains name, email, and city
     border: 1px solid lightgray;
     margin: 20px;
     padding: 20px;
-    height: 200px;
-    width: 400px;
+    height: 220px;
+    width: 425px;
 
 }
 
@@ -72,13 +84,32 @@ img {
 
 /* pop up window */
 
+.modal {
+    width: 30%;
+    position: relative;
+    text-align: center;
+    margin: 15% auto auto;
+    padding: 20px;
+    background-color: white;
+}
+
+.modal-content {
+    text-align: center;
+    margin: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
+
 .overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(100, 100, 100, 0.4)
+    background: rgba(116, 114, 114, 0.4);
+    text-align: center;
+    
 }
 /* X button to close popup window */
  .modal-close {
