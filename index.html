@@ -15,42 +15,40 @@
         <h3>AWESOME STARTUP EMPLOYEE DIRECTORY</h3>
     </head>
     <main class="wrapper">
-        
-            <div class="modal-close">X</div>
-
-
-        <div class="card"> 
-            <img src="employee_directory.png">
-            <div class="card-col">
-                <h3>Name Lastname</h3>
-                <p>email@email.com</p>
-                <p>city in a place</p>  
-            </div>  
-        </div>
-
-        <div class="card"> 
-            <img src="employee_directory.png">
-            <div class="card-col">
-                <h3>Name LongLastName______________2</h3>
-                <p>email</p>
-                <p>city</p>  
-            </div>  
-        </div>
-
-        <div class="card"> 
-            <img src="employee_directory.png">
-            <div class="card-col">
-                <h3>Name Person 3</h3>
-                <p>email@email.com</p>
-                <p>city in a longer place</p>  
-            </div>  
-        </div>
-
-
     
+
+        <div class="card"> 
+            <img class="avatar" alt="employee picture" src="employee_directory.png">
+            <div class="card-col">
+                <h3 class="name">Name Lastname</h3>
+                <p class="email">email@email.com</p>
+                <p class="address">city in a place</p>  
+            </div>  
+        </div>
+
     </main>
-    <footer></footer>
-<!--JavaScript for popup window and API info -->
+    
+    <div class="overlay hidden">
+        <div class="modal">
+            <button class="modal-close">X</button>
+        <div class="modal-content">
+        <!-- modal information will be added with JS here -->
+            <img class="avatar" src="member-1.jpg" />
+            <div class="text-container">
+                <h2 class="name">Haleigh Macchiarella</h2>
+                <p class="email">dtucker@yakitri.edu</p>
+                <p class="address">Chicago</p>
+                <hr />
+                <p>(593) 364-3249</p>
+                <p class="address">123 Anywhere St, WV 84814</p>
+                <p>Birthday: 01/04/85</p>
+            </div>
+         </div>
+        </div>        
+    </div>
+
+
+
 <script src="app.js"></script>
 </body>
 </html>

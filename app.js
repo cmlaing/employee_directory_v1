@@ -8,11 +8,13 @@ information in a popup window.
 
 // global variables
 let employees = [];
-const urlAPI = `https://randomuser.me/api/?results=12&inc=name, picture,
-email, location, phone, dob &noinfo &nat=US`;
+const urlAPI = `https://randomuser.me/api/?results=12&inc=name, picture, email, location,
+phone, dob &noinfo &nat=US`;
 const modalClose = document.querySelector(".modal-close");
 const gridContainer = document.querySelector(".wrapper");
-const modalContainer = document.querySelector(".card");
+const card = document.querySelector(".card");
+const overlay = document.querySelector(".overlay");
+const modalContainer = document.querySelector(".modal-content");
 
 
 /*
@@ -34,6 +36,7 @@ on the page
 
 function displayEmployees(employeeData){
     let employeeHTML = "";
+    employees = employeeData;
 
     //create some HTML based on employee info
     employees.forEach((employee, index) => {
@@ -58,25 +61,62 @@ gridContainer.innerHTML = employeeHTML;
 
 };
 
+/*================================
+Overlay - Modal Window
+=================================*/
 
 function displayModal(index) {
-    // use object destructuring make our template literal cleaner
-    let { name, dob, phone, email, location: { city, street, state, postcode
-    }, picture } = employees[index];
+    /* use object destructuring make our template literal cleaner */
+    let {
+      name,
+      dob,
+      phone,
+      email,
+      location: { street, city, state, postcode },
+      picture,
+    } = employees[index];
+  
     let date = new Date(dob.date);
+  
     const modalHTML = `
-        <img class="avatar" src="${picture.large}" />
-        <div class="text-container">
-        <h2 class="name">${name.first} ${name.last}</h2>
-        <p class="email">${email}</p>
-        <p class="address">${city}</p>
-        <hr />
-        <p>${phone}</p>
-        <p class="address">${street}, ${state} ${postcode}</p>
-        <p>Birthday:
-        ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
-        </div>
+         <button class="previous round" id="previous">&#8249;</button>
+         <img class="avatar" src="${picture.large}" />
+         <button class="next round" id="next">&#8250</button>
+         <div class="card-col">
+            <h2 class="name">${name.first} ${name.last}</h2>
+            <p class="email">${email}</p>
+            <p class="address">${city}</p>
+            <hr>
+            <p>${phone}</p>
+            <p class="address">${street.number} ${street.name} ${city} ${state} ${postcode}</p>
+        
+            <p>Birthday:
+            ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
+          </div>
         `;
+  
+  
     overlay.classList.remove("hidden");
     modalContainer.innerHTML = modalHTML;
 }
+
+/*================================
+Event Listeners
+=================================*/
+
+gridContainer.addEventListener('click', e => {
+    // make sure the click is not on the gridContainer itself
+    if (e.target !== gridContainer) {
+    // select the card element based on its proximity to actual element
+    
+    const card = e.target.closest(".card");
+    const index = card.getAttribute('data-index');
+    displayModal(index);
+    }
+    });
+
+// X to close
+
+modalClose.addEventListener('click', () => {
+    overlay.classList.add("hidden");
+    });
