@@ -1,0 +1,94 @@
+/* 
+========================================================================== 
+Design Layout for Project 8 Treehouse "Employee Directory"
+========================================================================== 
+*/
+
+/* Universal Attributes */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;  
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    
+
+}
+
+body {
+    height: 100vh;
+    background-color: white;
+
+}
+
+
+
+/* 
+Main content inside wrapper flexbox, 
+each employee placed inside card div,
+each card div contains img and card-col,
+card-col contains name, email, and city
+*/
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: center;
+}
+
+.card {
+    display: flex;
+    position: relative;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow:auto; /* ! makes content stay inside card div, horz scroll */
+
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    margin: 20px;
+    padding: 20px;
+    height: 200px;
+    width: 400px;
+
+}
+
+img { 
+    border-radius: 100%;
+    height: auto;
+    width: 150px;
+    padding: none;
+    margin: 10px;
+
+
+}
+
+.card-col {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: left;
+    
+
+}
+
+/* pop up window */
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(100, 100, 100, 0.4)
+}
+/* X button to close popup window */
+ .modal-close {
+        position: absolute;
+        right: 15px;
+        top: 5px;
+        cursor: pointer;
+ }
+
+ .hidden {
+    display: none;
+ }
+
