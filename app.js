@@ -17,22 +17,22 @@ const overlay = document.querySelector(".overlay");
 const modalContainer = document.querySelector(".modal-content");
 
 
-/*
+/*================================
 fetch info from API
 translate into json
 store info in variable results
 stick it in displayEmployees
-*/
+================================*/
 fetch(urlAPI)
     .then(res => res.json())
     .then(res => res.results)
     .then(displayEmployees)
     .catch(err => console.log(err))
 
-/*
+/*====================================================================
 displayEmployees function takes the data from the API and sticks it 
 on the page
-*/
+=====================================================================*/
 
 function displayEmployees(employeeData){
     let employeeHTML = "";
@@ -61,9 +61,11 @@ gridContainer.innerHTML = employeeHTML;
 
 };
 
-/*================================
+/*======================================================
 Overlay - Modal Window
-=================================*/
+Displays more info about each employee, 
+inserts into card-col div
+=======================================================*/
 
 function displayModal(index) {
     /* use object destructuring make our template literal cleaner */
@@ -98,12 +100,41 @@ function displayModal(index) {
   
     overlay.classList.remove("hidden");
     modalContainer.innerHTML = modalHTML;
+
+// Event Listener: Arrows in popup to switch employees
+let previousButton = document.getElementById('previous');
+let nextButton = document.getElementById('next');
+
+previousButton.addEventListener("click", e => {
+    if(e.target === previousButton) {
+      if(index === 0) {
+        displayModal(11); 
+      } else {
+        displayModal(index -1);
+      }
+    }
+  });
+
+nextButton.addEventListener("click", e => {
+    if(e.target === nextButton) {
+      if(index === 11) {
+        displayModal(0); 
+        index=0;
+      } else {
+        displayModal(index +1);
+      }
+    }
+  });
 }
 
-/*================================
+/*=================================================================
 Event Listeners
-=================================*/
+1. gridContainer click on the card to open the popup with more info
+2. Click the X in the overlay to close the popup
 
+==================================================================*/
+
+// 1. Open popup window
 gridContainer.addEventListener('click', e => {
     // make sure the click is not on the gridContainer itself
     if (e.target !== gridContainer) {
@@ -115,8 +146,13 @@ gridContainer.addEventListener('click', e => {
     }
     });
 
-// X to close
-
+// 2. X to close
 modalClose.addEventListener('click', () => {
     overlay.classList.add("hidden");
     });
+
+
+
+
+
+
