@@ -26,7 +26,7 @@ body {
 Header 
 ==================*/
 
-h3{
+h1{
     margin-top: 30px;
     margin-left: 50px;
     color: darkgray;
@@ -35,11 +35,18 @@ h3{
 }
 
 #search {
-    margin-top: 50px;
+    margin-top: 20px;
     margin-left: 50px;
     width: 30vw;
     height: 30px;
     padding: 5px;
+
+}
+
+#search:focus {
+    border: 2px solid pink; 
+    background: lightpink;
+    color: white; 
 
 }
 
@@ -61,14 +68,22 @@ card-col contains name, email, and city
     position: relative;
     align-items: flex-start;
     justify-content: flex-start;
-    overflow:auto; /* ! makes content stay inside card div, horz scroll */
+    /* ! makes content stay inside card div, no horz scroll */
+    max-width: 100%;
+    overflow-x: hidden;
 
     border-radius: 10px;
     border: 1px solid lightgray;
     margin: 20px;
     padding: 20px;
     height: 220px;
-    width: 425px;
+    width: 430px;
+
+}
+
+.card:hover {
+    border: 2px solid pink;  
+    box-shadow: 5px 5px pink;  
 
 }
 
@@ -82,33 +97,59 @@ img {
 
 }
 
+.name {
+    padding-top: 10px;
+}
+
 .card-col {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    text-align: left;
+    text-align: center;
+    padding: 10px;
     
 
 }
+
+.card-col h2 {
+    color: rgb(69, 69, 69);
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+}
+.card-col p {
+    color: darkgray;
+    padding-top: 5px;
+}
+
 
 /* pop up window */
 
 .modal {
     width: 30%;
+    height: 50%;
     position: relative;
     text-align: center;
-    margin: 15% auto auto;
-    padding: 20px;
+    margin: 100px auto;
+    padding: 15px;
     background-color: white;
 }
 
+
+
 .modal-content {
     text-align: center;
-    margin: auto;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 15px;
+    margin: 0 auto;
 
 }
+
+.text-container {
+    margin: 0 auto;
+    
+}
+
+
 
 .overlay {
     position: fixed;
@@ -126,7 +167,27 @@ img {
         right: 15px;
         top: 5px;
         cursor: pointer;
+        background: lightpink;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
  }
+
+ .next,
+.previous {
+  background-color: lightpink;
+  color: white;
+  height: 40px;
+  width: 40px;
+  font-size: 2rem;
+  border: none;
+  border-radius: 50%;
+
+  
+ 
+}
 
  .hidden {
     display: none;
