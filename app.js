@@ -141,7 +141,8 @@ gridContainer.addEventListener('click', e => {
     // select the card element based on its proximity to actual element
     
     const card = e.target.closest(".card");
-    const index = card.getAttribute('data-index');
+    
+    index = parseInt(card.getAttribute('data-index'));
     displayModal(index);
     }
     });
@@ -152,7 +153,46 @@ modalClose.addEventListener('click', () => {
     });
 
 
+/*======================================
+Filter Search Bar
+======================================*/
 
+const search = document.querySelector("#search");
 
+let filterEmployee = (event) => {
 
+  // get an array of card items and names
+  const cardArray = document.querySelectorAll(".card .name");
+  // the event of typing becomes the searchTerm
+  // translating to lowercase makes it easier to match terms
+  const searchTerm = event.target.value.toLowerCase();
+  /*
+  Look through cardArray. If the searchTerm matches the name of an 
+  employee (name), then display the employee card.
+  If it doesn't match, then don't show it.
+  This way only matches show up on the screen. 
+  */
+  cardArray.forEach((employeeCard) => {
+      // name needs to be lowercase to match searchTerm
+      let name = employeeCard.textContent.toLowerCase();
+      // name is nested inside card-col nested inside card, so call parentElement twice
+      let employee = employeeCard.parentElement.parentElement;
+      
+      /* syntax of includes() for future reference
+      arr.includes(valueToFind[, fromIndex])
+      */
 
+      if (name.includes(searchTerm)) {
+        employee.style.display = "";
+      } else {
+        employee.style.display = "none";
+      }
+
+  }
+  );
+
+}
+
+// keep track of keystrokes
+search.addEventListener('keyup', filterEmployee);
+search.addEventListener('search', filterEmployee);
