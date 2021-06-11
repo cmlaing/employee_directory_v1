@@ -11,7 +11,7 @@ let employees = [];
 const urlAPI = `https://randomuser.me/api/?results=12&inc=name, picture, email, location,
 phone, dob &noinfo &nat=US`;
 const gridContainer = document.querySelector(".wrapper");
-const card = document.querySelector(".card");
+
 const overlay = document.querySelector(".overlay");
 const modalContainer = document.querySelector(".modal-content");
 const modalClose = document.querySelector(".modal-close");
@@ -30,7 +30,7 @@ fetch(urlAPI)
     .then(res => res.json())
     .then(res => res.results)
     .then(displayEmployees)
-    .catch(err => console.log(err))
+    .catch(err => console.log(err));
 
 /*====================================================================
 displayEmployees function takes the data from the API and sticks it 
@@ -57,12 +57,12 @@ function displayEmployees(employeeData){
             <p class="address">${city}</p>
             </div>
             </div>
-`
+`;
         });
 
 gridContainer.innerHTML = employeeHTML;
 
-};
+}
 
 /*======================================================
 Overlay - Modal Window
@@ -145,7 +145,7 @@ gridContainer.addEventListener('click', e => {
     
     const card = e.target.closest(".card");
     
-    index = parseInt(card.getAttribute('data-index'));
+    let index = parseInt(card.getAttribute('data-index'));
     displayModal(index);
     }
     });
@@ -205,7 +205,7 @@ let filterEmployee = (event) => {
   }
   );
 
-}
+};
 
 search.addEventListener('keyup', filterEmployee);
 search.addEventListener('search', filterEmployee);
