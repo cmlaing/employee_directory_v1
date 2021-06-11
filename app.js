@@ -128,7 +128,7 @@ nextButton.addEventListener("click", e => {
 }
 
 /*=================================================================
-Event Listeners
+Independent Event Listeners
 1. gridContainer click on the card to open the popup with more info
 2. Click the X in the overlay to close the popup
 
@@ -155,6 +155,17 @@ modalClose.addEventListener('click', () => {
 
 /*======================================
 Filter Search Bar
+Create an array of card items and names,
+Look through cardArray and see if searchTerm matches employee name,
+If there is a match, display it,
+Otherwise, don't!
+
+Run the program
+search.addEventListener('keyup', filterEmployee);
+
+Clicking the X in the search bar makes the original array display again
+search.addEventListener('search', filterEmployee);
+
 ======================================*/
 
 const search = document.querySelector("#search");
@@ -193,6 +204,5 @@ let filterEmployee = (event) => {
 
 }
 
-// keep track of keystrokes
 search.addEventListener('keyup', filterEmployee);
 search.addEventListener('search', filterEmployee);
